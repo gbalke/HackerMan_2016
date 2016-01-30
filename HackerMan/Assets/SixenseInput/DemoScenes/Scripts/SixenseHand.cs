@@ -129,30 +129,53 @@ public class SixenseHand : MonoBehaviour
         
             GameObject LObject, RObject;
 
-            if (LTrig && gameObject.name == "left" && col.tag == "Throwable")
+
+        //pickup and throw gameobjects with Left hand
+        if (LTrig && gameObject.name == "left" && col.tag == "Throwable")
             {
-                LObject = col.gameObject;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+            LObject = col.gameObject;
 
             Vector3 dist = gameObject.transform.position - LObject.transform.position;
 
-                LObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
-                LObject.transform.rotation = gameObject.transform.rotation;
-                LObject.GetComponent<Rigidbody>().velocity = LVelocity / 750;
+             LObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                if (LObject.GetComponent<Rigidbody>().useGravity == true)
+                {
+                    LObject.transform.rotation = gameObject.transform.rotation;
+                }
+
+            LObject.GetComponent<Rigidbody>().velocity = LVelocity / 750;
+            }
+            else if (!LTrig)
+            {
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
 
-            if (RTrig && gameObject.name == "right" && col.tag == "Throwable")
+
+        //pickup and throw gameobjects with Right hand
+        if (RTrig && gameObject.name == "right" && col.tag == "Throwable")
             {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+                
                 RObject = col.gameObject;
 
             Vector3 dist = gameObject.transform.position - RObject.transform.position;
 
-                RObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
-                RObject.transform.rotation = gameObject.transform.rotation;
-                RObject.GetComponent<Rigidbody>().velocity = RVelocity / 750;
+              RObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                 if (RObject.GetComponent<Rigidbody>().useGravity == true)
+                 {
+                     RObject.transform.rotation = gameObject.transform.rotation;
+                 }
+            RObject.GetComponent<Rigidbody>().velocity = RVelocity / 750;
             
             }
+            else if (!RTrig)
+            {
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
+            }
 
-        //print("name : " + gameObject.name);
+
     }
       
 }

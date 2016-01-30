@@ -65,13 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719335209e2961f4fa09cb6ca5ee9bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   objectToThrow: {fileID: 186856, guid: b4698868d9189bd43a3111758fe46901, type: 2}
   targetObject: {fileID: 185118, guid: b440c287843de0b469d0435bd6d79df0, type: 2}
-=======
-  objectToThrow: {fileID: 0}
-  targetObject: {fileID: 0}
->>>>>>> b622d96d0db8b7a32db9d1330412248a633dd231
   distanceToThrowObject: 10
 --- !u!1001 &100100000
 Prefab:
@@ -83,11 +78,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: objectToThrow
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 186856, guid: b4698868d9189bd43a3111758fe46901, type: 2}
-=======
-      objectReference: {fileID: 0}
->>>>>>> b622d96d0db8b7a32db9d1330412248a633dd231
     - target: {fileID: 0}
       propertyPath: distanceToThrowObject
       value: 10
@@ -99,11 +90,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: targetObject
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 185118, guid: b440c287843de0b469d0435bd6d79df0, type: 2}
-=======
-      objectReference: {fileID: 0}
->>>>>>> b622d96d0db8b7a32db9d1330412248a633dd231
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167190}
