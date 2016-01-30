@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
 public class OnTouchBehavior : MonoBehaviour {
 
     public string targetName;
-
-    public event EventHandler objectHit;
 
     // Use this for initialization
 	void Start () {
@@ -22,7 +19,7 @@ public class OnTouchBehavior : MonoBehaviour {
     {
         if (other.gameObject.name == targetName)
         {
-            objectHit.Invoke(this, EventArgs.Empty);
+            Debug.Log("YESSSSS");
         }
     }
 
