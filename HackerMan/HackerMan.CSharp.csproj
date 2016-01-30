@@ -66,12 +66,12 @@
     <Compile Include="Assets\Scripts\GameObjectiveState.cs" />
     <Compile Include="Assets\Scripts\MissionControl.cs" />
     <Compile Include="Assets\Scripts\OnTouchBehavior.cs" />
+    <Compile Include="Assets\Scripts\SixenseHand.cs" />
+    <Compile Include="Assets\Scripts\SixenseHandsController.cs" />
     <Compile Include="Assets\Scripts\TestFail.cs" />
     <Compile Include="Assets\Scripts\TestGoal.cs" />
     <Compile Include="Assets\Scripts\ThrowGoal.cs" />
     <Compile Include="Assets\Scripts\TimeFail.cs" />
-    <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHand.cs" />
-    <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHandsController.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseInputTest.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseObjectController.cs" />
     <Compile Include="Assets\SixenseInput\Scripts\SixenseInput.cs" />
