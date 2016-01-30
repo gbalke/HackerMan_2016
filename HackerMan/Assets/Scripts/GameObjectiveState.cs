@@ -4,16 +4,6 @@ using System;
 
 abstract public class GameObjectiveState : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     public abstract bool CheckIfStateIsReached();
 }
 

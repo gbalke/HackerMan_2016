@@ -30,17 +30,19 @@ public class MissionControl : MonoBehaviour {
             challengeList.AddLast(c);
         }
         currentChallenge = challengeList.First;
+        GameIsRunning = true;
         currentChallenge.Value.StartChallenge();
 	}
 
     private void AttemptNextChallenge()
     {
-        Destroy(currentChallenge.Value);
+        DestroyImmediate(currentChallenge.Value);
         currentChallenge = currentChallenge.Next;
         // check if there are any more challenges
         if (currentChallenge == null)
         {
             throw new NotImplementedException("TODO: NO MORE CHALLENGES");
+            GameIsRunning = false;
         }
         else
         {   

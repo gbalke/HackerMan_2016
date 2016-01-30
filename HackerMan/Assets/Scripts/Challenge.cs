@@ -11,9 +11,9 @@ public class Challenge : MonoBehaviour {
     public bool IsStarted = false;
 
     // Goal
-    public GoalState goalState;
+    private GoalState goalState;
     // Fail State
-    public FailState failState;
+    private FailState failState;
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +26,10 @@ public class Challenge : MonoBehaviour {
     public void StartChallenge()
     {
         IsStarted = true;
-        goalState = Instantiate(goalState);
-        failState = Instantiate(failState);
+        //goalState = Instantiate(goalState);
+        //failState = Instantiate(failState);
+        goalState = GetComponent<GoalState>();
+        failState = GetComponent<FailState>();
         Debug.Log("chellege staert");
     }
 
@@ -37,16 +39,16 @@ public class Challenge : MonoBehaviour {
         {
             Debug.Log("goal reached");
             goalReached.Invoke(this, EventArgs.Empty);
-            Destroy(failState);
-            Destroy(goalState);
+            DestroyImmediate(failState);
+            DestroyImmediate(goalState);
             IsStarted = false;
         }
         if (IsStarted && failState.CheckIfStateIsReached())
         {
             Debug.Log("fail reached");
             failStateReached.Invoke(this, EventArgs.Empty);
-            Destroy(failState);
-            Destroy(goalState);
+            DestroyImmediate(failState);
+            DestroyImmediate(goalState);
             IsStarted = false;
         }
     }

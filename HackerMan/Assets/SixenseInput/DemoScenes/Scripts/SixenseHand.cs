@@ -11,6 +11,7 @@ public class SixenseHand : MonoBehaviour
 {
 	public SixenseHands	m_hand;
 	public SixenseInput.Controller m_controller = null;
+    public float moveSpeed;
 
     //Animator 	m_animator;
     Vector3 LVelocity, RVelocity;
@@ -125,8 +126,36 @@ public class SixenseHand : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
+        
+            GameObject LObject, RObject;
 
-      }
+            if (LTrig && gameObject.name == "left" && col.tag == "Throwable")
+            {
+                LObject = col.gameObject;
 
+            Vector3 dist = gameObject.transform.position - LObject.transform.position;
+
+                LObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                LObject.transform.rotation = gameObject.transform.rotation;
+                LObject.GetComponent<Rigidbody>().velocity = LVelocity / 750;
+            }
+
+            if (RTrig && gameObject.name == "right" && col.tag == "Throwable")
+            {
+                RObject = col.gameObject;
+
+            Vector3 dist = gameObject.transform.position - RObject.transform.position;
+
+                RObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                RObject.transform.rotation = gameObject.transform.rotation;
+                RObject.GetComponent<Rigidbody>().velocity = RVelocity / 750;
+            
+            }
+
+        //print("name : " + gameObject.name);
+    }
+      
 }
+
+
 
