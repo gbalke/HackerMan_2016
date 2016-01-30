@@ -57,6 +57,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -65,8 +71,11 @@
     <Compile Include="Assets\Scripts\Challenge.cs" />
     <Compile Include="Assets\Scripts\GameObjectiveState.cs" />
     <Compile Include="Assets\Scripts\MissionControl.cs" />
+    <Compile Include="Assets\Scripts\OnTouchBehavior.cs" />
     <Compile Include="Assets\Scripts\TestFail.cs" />
     <Compile Include="Assets\Scripts\TestGoal.cs" />
+    <Compile Include="Assets\Scripts\ThrowGoal.cs" />
+    <Compile Include="Assets\Scripts\TimeFail.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHand.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHandsController.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseInputTest.cs" />
