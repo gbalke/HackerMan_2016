@@ -125,8 +125,29 @@ public class SixenseHand : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
+        if (col.name != "Plane")
+        {
+            GameObject LObject, RObject;
 
-      }
+            if (LTrig && gameObject.name == "left") 
+            {
+                LObject = col.gameObject;
+                LObject.transform.position = gameObject.transform.position;
+                LObject.transform.rotation = gameObject.transform.rotation;
+                LObject.GetComponent<Rigidbody>().velocity = LVelocity / 800;
+            }
+
+            if (RTrig && gameObject.name == "right")
+            {
+                RObject = col.gameObject;
+                RObject.transform.position = gameObject.transform.position;
+                RObject.transform.rotation = gameObject.transform.rotation;
+                RObject.GetComponent<Rigidbody>().velocity = RVelocity / 800;
+            }
+        }
+
+        print("name : " + gameObject.name);
+     }
 
 }
 

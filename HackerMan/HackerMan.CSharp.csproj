@@ -62,6 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Challenge.cs" />
+    <Compile Include="Assets\Scripts\GameObjectiveState.cs" />
+    <Compile Include="Assets\Scripts\MissionControl.cs" />
+    <Compile Include="Assets\Scripts\TestFail.cs" />
+    <Compile Include="Assets\Scripts\TestGoal.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHand.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHandsController.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseInputTest.cs" />
