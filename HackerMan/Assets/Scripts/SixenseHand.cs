@@ -134,7 +134,7 @@ public class SixenseHand : MonoBehaviour
         //pickup and throw gameobjects with Left hand
         if (LTrig && gameObject.name == "left" && col.tag == "Throwable")
             {
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
 
             if(LObject == null)
             {
@@ -159,14 +159,14 @@ public class SixenseHand : MonoBehaviour
             else if (!LTrig && gameObject.name == "left")
             {
                 LObject = null;
-                gameObject.GetComponent<MeshRenderer>().enabled = true;
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
             }
 
 
         //pickup and throw gameobjects with Right hand
         if (RTrig && gameObject.name == "right" && col.tag == "Throwable")
             {
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
 
             if (RObject == null)
             {
@@ -190,7 +190,7 @@ public class SixenseHand : MonoBehaviour
             else if (!RTrig && gameObject.name == "right")
             {
                 RObject = null;
-                gameObject.GetComponent<MeshRenderer>().enabled = true;
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
             }
 
         
