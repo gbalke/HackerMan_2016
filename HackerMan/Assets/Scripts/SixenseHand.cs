@@ -18,9 +18,11 @@ public class SixenseHand : MonoBehaviour
 	Vector3		m_initialPosition, LprevPosition, RprevPosition;
 	Quaternion 	m_initialRotation;
     bool LTrig = false, RTrig = false;
+    GameObject lastLeft, lastRight;
+    GameObject LObject = null, RObject = null;
 
 
-	protected void Start() 
+    protected void Start() 
 	{
 		// get the Animator
 		//m_animator = gameObject.GetComponent<Animator>();
@@ -129,29 +131,34 @@ public class SixenseHand : MonoBehaviour
     void OnTriggerStay(Collider col)
     {
        
-        GameObject LObject, RObject;
-
-
-        
         //pickup and throw gameobjects with Left hand
         if (LTrig && gameObject.name == "left" && col.tag == "Throwable")
             {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-            LObject = col.gameObject;
+            if(LObject == null)
+            {
+                LObject = col.gameObject;
+            }
+            
 
-            Vector3 dist = gameObject.transform.position - LObject.transform.position;
-
-             LObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
-                if (LObject.GetComponent<Rigidbody>().useGravity == true)
+                if(lastLeft == LObject)
                 {
-                    LObject.transform.rotation = gameObject.transform.rotation;
-                }
+                    Vector3 dist = gameObject.transform.position - LObject.transform.position;
 
-            LObject.GetComponent<Rigidbody>().velocity = LVelocity / 750;
+                    LObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                    if (LObject.GetComponent<Rigidbody>().useGravity == true)
+                    {
+                        LObject.transform.rotation = gameObject.transform.rotation;
+                    }
+
+                    LObject.GetComponent<Rigidbody>().velocity = LVelocity / 750;
+                }
+            
             }
             else if (!LTrig && gameObject.name == "left")
             {
+                LObject = null;
                 gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
 
@@ -160,24 +167,37 @@ public class SixenseHand : MonoBehaviour
         if (RTrig && gameObject.name == "right" && col.tag == "Throwable")
             {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
-                
+
+            if (RObject == null)
+            {
                 RObject = col.gameObject;
+            }
+                if(lastRight == RObject)
+                {
+                    Vector3 dist = gameObject.transform.position - RObject.transform.position;
 
-            Vector3 dist = gameObject.transform.position - RObject.transform.position;
+                    RObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                    if (RObject.GetComponent<Rigidbody>().useGravity == true)
+                    {
+                        RObject.transform.rotation = gameObject.transform.rotation;
+                    }
+                    RObject.GetComponent<Rigidbody>().velocity = RVelocity / 750;
+                }
 
-              RObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
-                 if (RObject.GetComponent<Rigidbody>().useGravity == true)
-                 {
-                     RObject.transform.rotation = gameObject.transform.rotation;
-                 }
-            RObject.GetComponent<Rigidbody>().velocity = RVelocity / 750;
+            
             
             }
             else if (!RTrig && gameObject.name == "right")
             {
+                RObject = null;
                 gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
 
+        
+            lastLeft = LObject;
+            lastRight = RObject;
+        
+        
 
     }
       
