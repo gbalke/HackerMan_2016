@@ -6,8 +6,7 @@ public class TimeFail : FailState {
     public float countdownTime = 30;
 
     private float counter;
-
-    // TODO true if time has passed
+    
     public override bool CheckIfStateIsReached()
     {
         if (counter >= countdownTime)
