@@ -46,6 +46,8 @@ public class SixenseHand : MonoBehaviour
             
             HandleInput(i);
         }
+
+
 	}
 	
 	
@@ -126,10 +128,11 @@ public class SixenseHand : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
+       
+        GameObject LObject, RObject;
+
+
         
-            GameObject LObject, RObject;
-
-
         //pickup and throw gameobjects with Left hand
         if (LTrig && gameObject.name == "left" && col.tag == "Throwable")
             {
@@ -147,7 +150,7 @@ public class SixenseHand : MonoBehaviour
 
             LObject.GetComponent<Rigidbody>().velocity = LVelocity / 750;
             }
-            else if (!LTrig)
+            else if (!LTrig && gameObject.name == "left")
             {
                 gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
@@ -170,7 +173,7 @@ public class SixenseHand : MonoBehaviour
             RObject.GetComponent<Rigidbody>().velocity = RVelocity / 750;
             
             }
-            else if (!RTrig)
+            else if (!RTrig && gameObject.name == "right")
             {
                 gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
