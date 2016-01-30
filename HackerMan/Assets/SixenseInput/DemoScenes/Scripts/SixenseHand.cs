@@ -16,6 +16,7 @@ public class SixenseHand : MonoBehaviour
     Vector3 LVelocity, RVelocity;
 	Vector3		m_initialPosition, LprevPosition, RprevPosition;
 	Quaternion 	m_initialRotation;
+    bool LTrig = false, RTrig = false;
 
 
 	protected void Start() 
@@ -34,11 +35,11 @@ public class SixenseHand : MonoBehaviour
             m_controller = SixenseInput.GetController(m_hand);
         }
 
-
+        // calculate velocity for left then right controller
         LVelocity = CalcVelocity(0);
         RVelocity = CalcVelocity(1);
 
-        
+        //handles input from hydra buttons and triggers
         for (int i = 0; i < 2; i++)
         { 
             
@@ -51,36 +52,52 @@ public class SixenseHand : MonoBehaviour
 	protected void HandleInput(int i)
 	{
         
-            if(SixenseInput.Controllers[i].GetButton(SixenseButtons.TRIGGER))
+           if(SixenseInput.Controllers[i].GetButton(SixenseButtons.TRIGGER))
             {
                 //if left controller presses trigger down
                 if(i == 0)
                 {
-                print(LVelocity + " left");
+                    //print(LVelocity + " left");
+                    LTrig = true;
+                }
                 
-            }
-                //if right controller presses trigger down
-                else
+
+            //if right controller presses trigger down
+                if (i == 1)
                 {
-                print(RVelocity + "right");
+                    //print(RVelocity + "right");
+                    RTrig = true;
+                }
             }
-            
-
-
-
-        }
+            else
+            {
+               //if left controller releases trigger
+              if (i == 0)
+              {
+                 LTrig = false;
+              }
+               //if right controller releases trigger
+              else if (i == 1)
+              {
+                 RTrig = false;
+              }
+            }
+       // test which triggers are pressed
+       // print("TRIGGERS" + LTrig + " " + RTrig);
 	}
 
     Vector3 CalcVelocity(int i)
     {
-        //finish velocity work!!!
+        
         Vector3 velocity; 
 
+        //calculates velocity for left controller
         if(i == 0)
         {
             velocity = (SixenseInput.Controllers[i].Position - LprevPosition) / Time.deltaTime;
             LprevPosition = SixenseInput.Controllers[i].Position;
         }
+        //calculates velocity for right controller
         else
         {
             velocity = (SixenseInput.Controllers[i].Position - RprevPosition) / Time.deltaTime;
@@ -100,5 +117,16 @@ public class SixenseHand : MonoBehaviour
 	{
 		get { return m_initialPosition; }
 	}
+
+
+
+
+
+
+    void OnTriggerStay(Collider col)
+    {
+
+      }
+
 }
 
