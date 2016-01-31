@@ -5,13 +5,14 @@
 //
 
 using UnityEngine;
+using UnityEngine.VR;
 using System.Collections;
 
 public class SixenseHand : MonoBehaviour
 {
 	public SixenseHands	m_hand;
 	public SixenseInput.Controller m_controller = null;
-    public float moveSpeed;
+    public float GripStrength;
 
     //Animator 	m_animator;
     Vector3 LVelocity, RVelocity;
@@ -87,9 +88,15 @@ public class SixenseHand : MonoBehaviour
                  RTrig = false;
               }
             }
+
+        if (SixenseInput.Controllers[i].GetButtonDown(SixenseButtons.BUMPER))
+        {
+            InputTracking.Recenter();
+        }
+
        // test which triggers are pressed
        // print("TRIGGERS" + LTrig + " " + RTrig);
-	}
+    }
 
     Vector3 CalcVelocity(int i)
     {
@@ -146,7 +153,7 @@ public class SixenseHand : MonoBehaviour
                 {
                     Vector3 dist = gameObject.transform.position - LObject.transform.position;
 
-                    LObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                    LObject.GetComponent<Rigidbody>().AddForce(dist * GripStrength);
                     if (LObject.GetComponent<Rigidbody>().useGravity == true)
                     {
                         LObject.transform.rotation = gameObject.transform.rotation;
@@ -176,7 +183,7 @@ public class SixenseHand : MonoBehaviour
                 {
                     Vector3 dist = gameObject.transform.position - RObject.transform.position;
 
-                    RObject.GetComponent<Rigidbody>().AddForce(dist * moveSpeed);
+                    RObject.GetComponent<Rigidbody>().AddForce(dist * GripStrength);
                     if (RObject.GetComponent<Rigidbody>().useGravity == true)
                     {
                         RObject.transform.rotation = gameObject.transform.rotation;
