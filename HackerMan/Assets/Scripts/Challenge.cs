@@ -8,6 +8,7 @@ public class Challenge : MonoBehaviour {
     public event EventHandler failStateReached;
 
     public string challengeDescription = "TEMP DESCRIPTION";
+    public int order = 0;
 
     public bool IsStarted = false;
 
@@ -68,5 +69,11 @@ public class Challenge : MonoBehaviour {
         {
             handler(this, e);
         }
+    }
+
+    // NOTE: WILL NOT WORK IF A FAILSTATE DOES NOT CONTAIN TIME
+    public char GetTimeUntilFail(int i)
+    {
+        return failState.GetTimeCharAt(i);
     }
 }

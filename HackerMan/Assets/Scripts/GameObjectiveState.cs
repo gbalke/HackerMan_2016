@@ -23,7 +23,10 @@ abstract public class GoalState : GameObjectiveState { }
 
 
 
-abstract public class FailState : GameObjectiveState { }
+abstract public class FailState : GameObjectiveState {
+
+    public abstract char GetTimeCharAt(int i);
+}
 
 
 

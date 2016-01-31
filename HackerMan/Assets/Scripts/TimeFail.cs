@@ -26,4 +26,10 @@ public class TimeFail : FailState {
         //Debug.Log("updaing");
         counter += Time.deltaTime;
     }
+
+    public override char GetTimeCharAt(int i)
+    {
+        string text = "" + (countdownTime - counter);
+        return text[i];
+    }
 }

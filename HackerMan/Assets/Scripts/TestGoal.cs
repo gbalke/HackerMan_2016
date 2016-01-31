@@ -6,11 +6,13 @@ using System;
 // example goal
 public class TestGoal : GoalState
 {
-    int test = 0;
+    public float countdown = 5f;
+
+    private float counter = 0;
 
     public override bool CheckIfStateIsReached()
     {
-        if (test == 5)
+        if (counter >= countdown)
         {
             return true;
         }
@@ -19,6 +21,6 @@ public class TestGoal : GoalState
 
     public void Update()
     {
-        test++;
+        counter += Time.deltaTime;
     }
 }

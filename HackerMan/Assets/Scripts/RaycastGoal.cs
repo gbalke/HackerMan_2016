@@ -23,8 +23,11 @@ public class RaycastGoal : GoalState
         RaycastHit hit;
         if (Physics.Raycast(sourceObject.transform.position, sourceObject.transform.forward, out hit))
         {
+            Debug.Log(hit.transform.gameObject.name);
+            Debug.Log(targetObject.name);
             if (hit.transform.gameObject.name.Equals(targetObject.name))
             {
+                Debug.Log(counter);
                 counter += Time.deltaTime;
                 if (counter >= durationOnTarget)
                 {
