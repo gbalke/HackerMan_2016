@@ -11,27 +11,34 @@ public class LeverControl : MonoBehaviour {
 	// The current angle of the lever.
 	public float leverAng;
 
+    Light lt;
+    GameObject lights;
+
 	// Use this for initialization
 	void Start () {
-		
+        lt = GetComponentInChildren<Light>();
+        lights = lt.gameObject;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		leverAng = transform.rotation.x;
+        leverAng = transform.localRotation.x;
 
-		if ( leverAng >= 115 ) 
+		if ( leverAng >= 0.8f ) 
 		{
 			trig = leverState.ON;
+            lights.gameObject.SetActive(true);
 		} 
-		else if ( leverAng <= 55 ) 
+		else if ( leverAng <= 0.5f ) 
 		{
 			trig = leverState.OFF;
-		} 
+            lights.gameObject.SetActive(false);
+        } 
 		else 
 		{
 			trig = leverState.NA;
-		}
+            lights.gameObject.SetActive(false);
+        }
 	}
 }
