@@ -6,6 +6,7 @@ public enum leverState { ON = 1, OFF = 2, NA = 3 };
 public class LeverControl : MonoBehaviour {
 
 	public GameObject[] interacts;
+    public bool up = false;
 
 	// 0 is off and 1 is on.
 	public leverState trig;
@@ -28,17 +29,38 @@ public class LeverControl : MonoBehaviour {
 		if ( leverAng >= 0.8f ) 
 		{
 			trig = leverState.ON;
-            On();
+            if (up)
+            {
+                On();
+            }
+            else
+            {
+                Off();
+            }
 		} 
 		else if ( leverAng <= 0.5f ) 
 		{
 			trig = leverState.OFF;
-            Off();
+            if (up)
+            {
+                Off();
+            }
+            else
+            {
+                On();
+            }
         } 
 		else 
 		{
 			trig = leverState.NA;
-            Off();
+            if (up)
+            {
+                On();
+            }
+            else
+            {
+                Off();
+            }
         }
 	}
 
