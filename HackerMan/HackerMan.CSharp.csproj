@@ -57,19 +57,15 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ButtonControl.cs" />
     <Compile Include="Assets\Scripts\Challenge.cs" />
     <Compile Include="Assets\Scripts\GameObjectiveState.cs" />
+    <Compile Include="Assets\Scripts\LeverControl.cs" />
     <Compile Include="Assets\Scripts\MissionControl.cs" />
     <Compile Include="Assets\Scripts\OnTouchBehavior.cs" />
     <Compile Include="Assets\Scripts\SixenseHand.cs" />
