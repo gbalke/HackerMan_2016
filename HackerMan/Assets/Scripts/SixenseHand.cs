@@ -44,14 +44,19 @@ public class SixenseHand : MonoBehaviour
         RVelocity = CalcVelocity(1);
 
         //handles input from hydra buttons and triggers
-        for (int i = 0; i < 2; i++)
-        { 
-            
-            HandleInput(i);
-        }
+        
 
 
 	}
+
+    void FixedUpdate()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+
+            HandleInput(i);
+        }
+    }
 	
 	
 	// Updates the animated object from controller input.

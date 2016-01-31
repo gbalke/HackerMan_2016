@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Leif Test Leve.unity
+- path: Assets/Initial Level.unity
   isLoaded: 1
   isActive: 1
