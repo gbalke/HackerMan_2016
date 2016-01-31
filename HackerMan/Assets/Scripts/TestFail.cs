@@ -21,7 +21,8 @@ public class TestFail : FailState
 
     public override char GetTimeCharAt(int i)
     {
-        return '\0';
+        string text = (countdown - counter).ToString();
+        return text[i];
     }
 
     public void Update()

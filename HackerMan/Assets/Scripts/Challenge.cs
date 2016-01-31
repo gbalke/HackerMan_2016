@@ -13,13 +13,15 @@ public class Challenge : MonoBehaviour {
     public bool IsStarted = false;
 
     // Goal
-    private GoalState goalState;
+    public  GoalState goalState;
     // Fail State
-    private FailState failState;
+    public  FailState failState;
 
 	// Use this for initialization
 	void Start () {
 
+        //goalState.enabled = false;
+        //failState.enabled = false;
         
     }
 
@@ -27,7 +29,10 @@ public class Challenge : MonoBehaviour {
     // use this to initialize any game specific logic
     public void StartChallenge()
     {
+        //goalState.enabled = true;
+        //failState.enabled = true;
         IsStarted = true;
+        this.gameObject.SetActive(true);
         goalState = GetComponent<GoalState>();
         failState = GetComponent<FailState>();
         Debug.Log("chellege staert");
