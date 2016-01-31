@@ -23,6 +23,7 @@ public class TimeFail : FailState {
 
     void Update()
     {
+        //Debug.Log("updaing");
         counter += Time.deltaTime;
     }
 }
