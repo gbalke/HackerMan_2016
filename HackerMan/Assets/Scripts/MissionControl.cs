@@ -25,11 +25,13 @@ public class MissionControl : MonoBehaviour {
 	void Start () {
         challengeList = new LinkedList<Challenge>();
         Challenge[] challenges = FindObjectsOfType<Challenge>();
+        Array.Sort(challenges, delegate (Challenge x, Challenge y) { return x.order.CompareTo(y.order); });
 
         for (int i = 0; i < challenges.Length; i++)
         {
 
             Challenge c = challenges[i];
+            Debug.Log(c.order);
             //c.enabled = false;
             c.goalReached += C_goalReached1;
             c.failStateReached += C_failStateReached1;
@@ -39,6 +41,8 @@ public class MissionControl : MonoBehaviour {
         //first.goalReached += C_goalReached1;
         //first.failStateReached += C_failStateReached1;
         //challengeList.AddFirst(first);
+
+
 
         Debug.Log(++currentChal);
         currentChallenge = challengeList.First;
