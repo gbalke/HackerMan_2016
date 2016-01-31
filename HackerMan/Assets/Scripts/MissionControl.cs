@@ -44,13 +44,7 @@ public class MissionControl : MonoBehaviour {
 
 
 
-        Debug.Log(++currentChal);
-        currentChallenge = challengeList.First;
-        computerTextMesh = computerScreen.transform.GetChild(0).GetComponent<TextMesh>();
-        displayChallengeDescription();
-        currentChallenge.Value.StartChallenge();
-
-        GameIsRunning = true;
+        
 	}
 
     private void C_failStateReached1(object sender, EventArgs e)
@@ -123,7 +117,7 @@ public class MissionControl : MonoBehaviour {
         if (currentChallenge == null)
         {
             GameIsRunning = false;
-            currentDescription = "You have hacked in";
+            currentDescription = "Hacked In!";
         }
         else
         {
@@ -135,56 +129,77 @@ public class MissionControl : MonoBehaviour {
         
     }
 
+    bool init = false;
+
     void Update()
     {
-        int tempCounter = 0;
-        //string textToAppear = "";
-        //for (int i = 0; i < LINEHEIGHT; ++i)
-        //{
-        //    for (int p = 0; p < LINELENGTH; ++p)
-        //    {
-        //        textToAppear += RandomLetter.GetLetter();
-        //        tempCounter++;
-        //    }
-        //    textToAppear += "\n";
-        //}
-        string textToAppear = "";
-        bool useDesc = false;
-        int messageIndex = 0;
-        for (int i = 0, size = LINELENGTH * LINEHEIGHT; i < size; ++i)
+        if (SixenseHandsController.m_bInitialized && !init)
         {
-            if (i == descriptionIndex)
+            init = true;
+            Debug.Log(++currentChal);
+            currentChallenge = challengeList.First;
+            computerTextMesh = computerScreen.transform.GetChild(0).GetComponent<TextMesh>();
+            displayChallengeDescription();
+            currentChallenge.Value.StartChallenge();
+
+            GameIsRunning = true;
+        }
+
+        if (GameIsRunning)
+        {
+            int tempCounter = 0;
+            //string textToAppear = "";
+            //for (int i = 0; i < LINEHEIGHT; ++i)
+            //{
+            //    for (int p = 0; p < LINELENGTH; ++p)
+            //    {
+            //        textToAppear += RandomLetter.GetLetter();
+            //        tempCounter++;
+            //    }
+            //    textToAppear += "\n";
+            //}
+            string textToAppear = "";
+            bool useDesc = false;
+            int messageIndex = 0;
+            for (int i = 0, size = LINELENGTH * LINEHEIGHT; i < size; ++i)
             {
-                useDesc = true;
+                if (i == descriptionIndex)
+                {
+                    useDesc = true;
+                }
+                if (useDesc && messageIndex >= currentDescription.Length)
+                {
+                    useDesc = false;
+                }
+                else if (useDesc)
+                {
+                    textToAppear += currentDescription[messageIndex++];
+                }
+                else if (i < 2)
+                {
+                    textToAppear += "0";// currentChallenge.Value.GetTimeUntilFail(i); // TODO: Getting time not working
+                }
+                else
+                {
+                    textToAppear += RandomLetter.GetLetter();
+                }
+
+                tempCounter++;
+                if (tempCounter % LINELENGTH == 0)
+                {
+                    textToAppear += "\n";
+                }
             }
-            if (useDesc && messageIndex >= currentDescription.Length)
+            if (GameIsRunning)
             {
-                useDesc = false;
-            }
-            else if (useDesc)
-            {
-                textToAppear += currentDescription[messageIndex++];
-            }
-            else if (i < 2)
-            {
-                textToAppear += "0";// currentChallenge.Value.GetTimeUntilFail(i); // TODO: Getting time not working
+                computerTextMesh.text = textToAppear;
             }
             else
             {
-                textToAppear += RandomLetter.GetLetter();
+                computerTextMesh.text = currentDescription;
             }
 
-            tempCounter++;
-            if (tempCounter % LINELENGTH == 0)
-            {
-                textToAppear += "\n";
-            }
         }
-        if (GameIsRunning)
-        {
-            computerTextMesh.text = textToAppear;
-        }
-        
     }
 }
 
