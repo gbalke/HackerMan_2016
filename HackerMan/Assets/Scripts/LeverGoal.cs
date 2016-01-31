@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class LeverGoal : MonoBehaviour {
+public class LeverGoal : GoalState
+{
+    public GameObject lever;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public leverState goal = leverState.OFF;
+
+    public override bool CheckIfStateIsReached()
+    {
+        return lever.GetComponent<LeverControl>().trig == goal;
+    }
 }

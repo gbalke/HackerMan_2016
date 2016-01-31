@@ -18,14 +18,18 @@ public class ThrowGoal : GoalState
         objectToThrow = GameObject.Find(objectToThrow.name);
         if (targetObject != null)
         {
-            targetObject = GameObject.Find(targetObject.name);
+            Debug.Log(targetObject.name);
             targetObject.GetComponent<OnTouchBehavior>().objectHit += ThrowGoal_objectHit;
             targetRB = targetObject.GetComponent<Rigidbody>();
             grabbedRB = objectToThrow.GetComponent<Rigidbody>();
         }
+        else
+        {
+            Debug.Log("target is null");
+        }
     }
 
-    private void ThrowGoal_objectHit(object sender, EventArgs e)
+    public void ThrowGoal_objectHit(object sender, EventArgs e)
     {
         targetHit = true;
     }

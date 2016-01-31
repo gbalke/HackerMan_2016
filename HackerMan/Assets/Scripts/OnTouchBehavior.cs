@@ -4,7 +4,7 @@ using System;
 
 public class OnTouchBehavior : MonoBehaviour {
 
-    public string targetName;
+    public GameObject targetName;
 
     public event EventHandler objectHit;
 
@@ -20,17 +20,23 @@ public class OnTouchBehavior : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == targetName && objectHit != null)
+        Debug.Log(other.gameObject.name);
+        Debug.Log(targetName.name);
+        if (other.gameObject.name.Equals(targetName.name))
         {
+            Debug.Log("does invoke");
             objectHit.Invoke(this, EventArgs.Empty);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == targetName)
+        Debug.Log(other.gameObject.name);
+        Debug.Log(targetName.name);
+        if (other.gameObject.name == targetName.name)
         {
-            Debug.Log("YESSSSS");
+            Debug.Log("Does Invoke");
+            objectHit.Invoke(this, EventArgs.Empty);
         }
     }
 }

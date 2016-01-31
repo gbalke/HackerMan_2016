@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum leverState { ON = 1, OFF = 2, NA = 3 };
+
 public class LeverControl : MonoBehaviour {
 
-	public enum leverState {ON = 1, OFF = 2, NA = 3};
+	
 
 	// 0 is off and 1 is on.
 	public leverState trig;

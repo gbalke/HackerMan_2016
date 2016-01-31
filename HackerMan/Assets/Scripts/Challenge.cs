@@ -7,6 +7,7 @@ public class Challenge : MonoBehaviour {
     public event EventHandler goalReached;
     public event EventHandler failStateReached;
 
+    public string challengeDescription = "TEMP DESCRIPTION";
 
     public bool IsStarted = false;
 
