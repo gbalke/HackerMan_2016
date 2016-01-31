@@ -5,7 +5,7 @@ public enum leverState { ON = 1, OFF = 2, NA = 3 };
 
 public class LeverControl : MonoBehaviour {
 
-	
+	public GameObject[] interacts;
 
 	// 0 is off and 1 is on.
 	public leverState trig;
@@ -13,13 +13,11 @@ public class LeverControl : MonoBehaviour {
 	// The current angle of the lever.
 	public float leverAng;
 
-    Light lt;
-    GameObject lights;
+    
 
 	// Use this for initialization
 	void Start () {
-        lt = GetComponentInChildren<Light>();
-        lights = lt.gameObject;
+        
 	}
 	
 	// Update is called once per frame
@@ -30,17 +28,33 @@ public class LeverControl : MonoBehaviour {
 		if ( leverAng >= 0.8f ) 
 		{
 			trig = leverState.ON;
-            lights.gameObject.SetActive(true);
+            On();
 		} 
 		else if ( leverAng <= 0.5f ) 
 		{
 			trig = leverState.OFF;
-            lights.gameObject.SetActive(false);
+            Off();
         } 
 		else 
 		{
 			trig = leverState.NA;
-            lights.gameObject.SetActive(false);
+            Off();
         }
 	}
+
+    void Off()
+    {
+        for (int i = 0; i < interacts.Length; i++)
+        {
+            interacts[i].gameObject.SetActive(false);
+        }
+    }
+
+    void On()
+    {
+        for (int i = 0; i < interacts.Length; i++)
+        {
+            interacts[i].gameObject.SetActive(true);
+        }
+    }
 }
