@@ -184,6 +184,10 @@ public class MissionControl : MonoBehaviour {
         {
             computerTextMesh.text = textToAppear;
         }
+        else
+        {
+            computerTextMesh.text = currentDescription;
+        }
         
     }
 }
