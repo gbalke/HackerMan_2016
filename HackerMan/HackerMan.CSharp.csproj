@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\MissionControl.cs" />
     <Compile Include="Assets\Scripts\OnLeaveBehavior.cs" />
     <Compile Include="Assets\Scripts\OnTouchBehavior.cs" />
+    <Compile Include="Assets\Scripts\RaycastGoal.cs" />
     <Compile Include="Assets\Scripts\SixenseHand.cs" />
     <Compile Include="Assets\Scripts\SixenseHandsController.cs" />
     <Compile Include="Assets\Scripts\SliderGoal.cs" />
