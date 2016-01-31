@@ -25,12 +25,16 @@ public class MissionControl : MonoBehaviour {
 	void Start () {
         challengeList = new LinkedList<Challenge>();
         Challenge[] challenges = FindObjectsOfType<Challenge>();
+        Array.Sort(challenges, delegate (Challenge x, Challenge y) { return x.order.CompareTo(y.order); });
 
         for (int i = 0; i < challenges.Length; i++)
         {
 
             Challenge c = challenges[i];
-            //c.enabled = false;
+            Debug.Log(c.order);
+            //c.goalState.enabled = false;
+            //c.failState.enabled = false;
+            c.gameObject.SetActive(false);
             c.goalReached += C_goalReached1;
             c.failStateReached += C_failStateReached1;
             challengeList.AddLast(c);
@@ -39,6 +43,8 @@ public class MissionControl : MonoBehaviour {
         //first.goalReached += C_goalReached1;
         //first.failStateReached += C_failStateReached1;
         //challengeList.AddFirst(first);
+
+
 
         Debug.Log(++currentChal);
         currentChallenge = challengeList.First;
@@ -119,7 +125,7 @@ public class MissionControl : MonoBehaviour {
         if (currentChallenge == null)
         {
             GameIsRunning = false;
-            currentDescription = "You have hacked in";
+            currentDescription = "hacked in";
         }
         else
         {
@@ -163,7 +169,10 @@ public class MissionControl : MonoBehaviour {
             }
             else if (i < 2)
             {
-                textToAppear += "0";// currentChallenge.Value.GetTimeUntilFail(i); // TODO: Getting time not working
+                char chara = ' ';
+                if (currentChallenge != null) chara = currentChallenge.Value.GetTimeUntilFail(i);
+                //Debug.Log(chara);
+                textToAppear += chara; // TODO: Getting time not working
             }
             else
             {
@@ -179,6 +188,10 @@ public class MissionControl : MonoBehaviour {
         if (GameIsRunning)
         {
             computerTextMesh.text = textToAppear;
+        }
+        else
+        {
+            computerTextMesh.text = currentDescription;
         }
         
     }
