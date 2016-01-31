@@ -20,7 +20,7 @@ public class OnTouchBehavior : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == targetName)
+        if (other.gameObject.name == targetName && objectHit != null)
         {
             objectHit.Invoke(this, EventArgs.Empty);
         }
