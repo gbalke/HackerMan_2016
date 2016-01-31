@@ -4,39 +4,25 @@ using System;
 
 public class OnTouchBehavior : MonoBehaviour {
 
-    public GameObject targetName;
+    //public GameObject targetName;
 
     public event EventHandler objectHit;
 
-    // Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.gameObject.name);
-        Debug.Log(targetName.name);
-        if (other.gameObject.name.Equals(targetName.name))
+        //Debug.Log(other.gameObject.tag);
+        //Debug.Log(objectHit);
+        if (objectHit != null)
         {
-            Debug.Log("does invoke");
-            objectHit.Invoke(this, EventArgs.Empty);
+            Debug.Log("invoking");
+            objectHit.Invoke(other.gameObject, EventArgs.Empty);
         }
+            
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        Debug.Log(targetName.name);
-        if (other.gameObject.name == targetName.name)
-        {
-            Debug.Log("Does Invoke");
-            objectHit.Invoke(this, EventArgs.Empty);
-        }
+        if (objectHit != null)
+            objectHit.Invoke(other.gameObject, EventArgs.Empty);
     }
 }

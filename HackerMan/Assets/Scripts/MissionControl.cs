@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class MissionControl : MonoBehaviour {
 
-    
+    public Challenge openningChallege;
 
     public GameObject computerScreen;
     //public GameObject challengeTextPrefab;
@@ -35,12 +35,13 @@ public class MissionControl : MonoBehaviour {
             c.failStateReached += C_failStateReached1;
             challengeList.AddLast(c);
         }
+        //Challenge first = Instantiate(openningChallege);
+        //first.goalReached += C_goalReached1;
+        //first.failStateReached += C_failStateReached1;
+        //challengeList.AddFirst(first);
 
-        
         Debug.Log(++currentChal);
         currentChallenge = challengeList.First;
-        //currentChallenge.Value.enabled = true;
-        //displayChallengeDescription();
         computerTextMesh = computerScreen.transform.GetChild(0).GetComponent<TextMesh>();
         displayChallengeDescription();
         currentChallenge.Value.StartChallenge();
@@ -50,7 +51,8 @@ public class MissionControl : MonoBehaviour {
 
     private void C_failStateReached1(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        GameIsRunning = false;
+        currentDescription = "GAME OVER";
     }
 
     private void C_goalReached1(object sender, EventArgs e)
@@ -65,7 +67,7 @@ public class MissionControl : MonoBehaviour {
         int length = currentDescription.Length;
         int maxChars = LINEHEIGHT * LINELENGTH;
         int range = maxChars - length;
-        descriptionIndex = (int)Math.Floor(UnityEngine.Random.value * range);
+        descriptionIndex = (int)Math.Floor(UnityEngine.Random.value * (range - 3) + 3);
 
         //int numberOfNewLine = (length + (descriptionIndex % LINELENGTH)) / LINELENGTH;
         ////int someIndex = descriptionIndex % LINELENGTH;
@@ -110,13 +112,14 @@ public class MissionControl : MonoBehaviour {
     int currentChal = 0;
     private void AttemptNextChallenge()
     {
-        currentChallenge.Value.enabled = false;
+        //currentChallenge.Value.enabled = false;
         Destroy(currentChallenge.Value);
         currentChallenge = currentChallenge.Next;
         // check if there are any more challenges
         if (currentChallenge == null)
         {
-            throw new NotImplementedException("TODO: YOU WIN TEH GAME");
+            GameIsRunning = false;
+            currentDescription = "You have hacked in";
         }
         else
         {
@@ -158,6 +161,10 @@ public class MissionControl : MonoBehaviour {
             {
                 textToAppear += currentDescription[messageIndex++];
             }
+            else if (i < 2)
+            {
+                textToAppear += "0";// currentChallenge.Value.GetTimeUntilFail(i); // TODO: Getting time not working
+            }
             else
             {
                 textToAppear += RandomLetter.GetLetter();
@@ -169,7 +176,11 @@ public class MissionControl : MonoBehaviour {
                 textToAppear += "\n";
             }
         }
-        computerTextMesh.text = textToAppear;
+        if (GameIsRunning)
+        {
+            computerTextMesh.text = textToAppear;
+        }
+        
     }
 }
 

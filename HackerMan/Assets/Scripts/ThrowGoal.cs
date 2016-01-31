@@ -5,23 +5,24 @@ using System;
 public class ThrowGoal : GoalState
 {
     public GameObject objectToThrow;
+    public string throwableTagName = "";
     public GameObject targetObject;
 
     public float distanceToThrowObject = 10f;
 
     private bool targetHit = false;
-    private Rigidbody targetRB;
-    private Rigidbody grabbedRB;
 
     void Start()
     {
-        objectToThrow = GameObject.Find(objectToThrow.name);
+        if (throwableTagName.Length == 0)
+        {
+            objectToThrow = GameObject.Find(objectToThrow.name);
+        }
+        
         if (targetObject != null)
         {
             //Debug.Log(targetObject.name);
             targetObject.GetComponent<OnTouchBehavior>().objectHit += ThrowGoal_objectHit;
-            targetRB = targetObject.GetComponent<Rigidbody>();
-            grabbedRB = objectToThrow.GetComponent<Rigidbody>();
         }
         else
         {
@@ -31,7 +32,13 @@ public class ThrowGoal : GoalState
 
     public void ThrowGoal_objectHit(object sender, EventArgs e)
     {
-        targetHit = true;
+        GameObject go = (GameObject)sender;
+        Debug.Log(sender);
+        if (go.tag == throwableTagName || (objectToThrow != null && objectToThrow.name.Equals(go.name)))
+        {
+            Debug.Log("does invoke");
+            targetHit = true;
+        }
     }
 
     public override bool CheckIfStateIsReached()
@@ -43,11 +50,15 @@ public class ThrowGoal : GoalState
         }
         else // otherwise throw an object away a certain distance
         {
-            float distance = Vector3.Distance(objectToThrow.transform.position, Camera.main.transform.position);
-            if (distance >= distanceToThrowObject)
+            if (objectToThrow != null)
             {
-                return true;
+                float distance = Vector3.Distance(objectToThrow.transform.position, Camera.main.transform.position);
+                if (distance >= distanceToThrowObject)
+                {
+                    return true;
+                }
             }
+            
         }
         return false;
     }
