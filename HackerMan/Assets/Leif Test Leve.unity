@@ -360,6 +360,14 @@ Prefab:
       propertyPath: DownTrigger
       value: 
       objectReference: {fileID: 425286892}
+    - target: {fileID: 11455268, guid: 9c2bf1c4fa6c9704abe56bd160fee7e7, type: 2}
+      propertyPath: challengeDescription
+      value: Slide the thing.
+      objectReference: {fileID: 0}
+    - target: {fileID: 160082, guid: 9c2bf1c4fa6c9704abe56bd160fee7e7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c2bf1c4fa6c9704abe56bd160fee7e7, type: 2}
   m_IsPrefabParent: 0
@@ -436,9 +444,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 668575532}
-  m_LocalRotation: {x: 0.101750545, y: -0.31747714, z: -0.24674684, w: 0.9099292}
+  m_LocalRotation: {x: -0.32910898, y: -0.24537806, z: -0.16323617, w: 0.8971237}
   m_LocalPosition: {x: -1.3221, y: -0.38, z: -6.9}
-  m_LocalScale: {x: 0.3204261, y: 0.3204261, z: 0.3204261}
+  m_LocalScale: {x: 0.4, y: 0.1, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -597,6 +605,14 @@ Prefab:
       propertyPath: lever
       value: 
       objectReference: {fileID: 1561240183}
+    - target: {fileID: 11432214, guid: cd6c6fd917d6e0f4fb883df7cd67a9c4, type: 2}
+      propertyPath: challengeDescription
+      value: Flip the switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 164768, guid: cd6c6fd917d6e0f4fb883df7cd67a9c4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd6c6fd917d6e0f4fb883df7cd67a9c4, type: 2}
   m_IsPrefabParent: 0
@@ -689,6 +705,14 @@ Prefab:
       propertyPath: targetObject
       value: 
       objectReference: {fileID: 895249778}
+    - target: {fileID: 11464728, guid: 68cd6ba2b412f1d43aa21d4519bb078f, type: 2}
+      propertyPath: challengeDescription
+      value: Hit the radar
+      objectReference: {fileID: 0}
+    - target: {fileID: 167190, guid: 68cd6ba2b412f1d43aa21d4519bb078f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68cd6ba2b412f1d43aa21d4519bb078f, type: 2}
   m_IsPrefabParent: 0
@@ -1021,6 +1045,10 @@ Prefab:
       propertyPath: challengeDesciptions.Array.data[5]
       value: 
       objectReference: {fileID: 186238, guid: da5f83218d49ce04ba28d38547b74ce8, type: 2}
+    - target: {fileID: 11416220, guid: c647d0a941e2d264e9aed7b17a960236, type: 2}
+      propertyPath: challengeTextPrefab
+      value: 
+      objectReference: {fileID: 186238, guid: da5f83218d49ce04ba28d38547b74ce8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c647d0a941e2d264e9aed7b17a960236, type: 2}
   m_IsPrefabParent: 0
@@ -1159,6 +1187,14 @@ Prefab:
       propertyPath: objectInContainer
       value: 
       objectReference: {fileID: 911894443}
+    - target: {fileID: 11402676, guid: 94e93d7d36a06ca469eca6b6d2e7a8ab, type: 2}
+      propertyPath: challengeDescription
+      value: Take out cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 124028, guid: 94e93d7d36a06ca469eca6b6d2e7a8ab, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94e93d7d36a06ca469eca6b6d2e7a8ab, type: 2}
   m_IsPrefabParent: 0

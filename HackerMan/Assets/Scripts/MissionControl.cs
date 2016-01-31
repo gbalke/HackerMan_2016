@@ -8,11 +8,13 @@ public class MissionControl : MonoBehaviour {
     private int descriptionIndex = 0;
 
     public GameObject computerScreen;
+    public GameObject challengeTextPrefab;
 
     public LinkedList<Challenge> challengeList;
     public LinkedListNode<Challenge> currentChallenge;
     public bool GameIsRunning;
 
+    private GameObject currentDescription;
 
 	// Use this for initialization
 	void Start () {
@@ -29,11 +31,13 @@ public class MissionControl : MonoBehaviour {
             challengeList.AddLast(c);
         }
 
-        displayChallengeDescription();
+        
         Debug.Log(++currentChal);
         currentChallenge = challengeList.First;
         //currentChallenge.Value.enabled = true;
+        displayChallengeDescription();
         currentChallenge.Value.StartChallenge();
+
         GameIsRunning = true;
 	}
 
@@ -49,15 +53,17 @@ public class MissionControl : MonoBehaviour {
 
     private void displayChallengeDescription()
     {
-        // TODO: if not the first challenge, move the current message down
-        GameObject message = challengeDesciptions[descriptionIndex++];
+        if (currentDescription != null) Destroy(currentDescription);
 
-        Vector3 size = message.GetComponent<MeshRenderer>().bounds.size;
+        // TODO: if not the first challenge, move the current message down
+        string description = currentChallenge.Value.challengeDescription;
+
+        Vector3 size = challengeTextPrefab.GetComponent<MeshRenderer>().bounds.size;
         Vector3 spawnLocation = computerScreen.transform.position;
 
 
         MeshRenderer computerRend = computerScreen.GetComponent<MeshRenderer>();
-        MeshRenderer messageRend = message.GetComponent<MeshRenderer>();
+        MeshRenderer messageRend = challengeTextPrefab.GetComponent<MeshRenderer>();
 
         // scale the message
         //message.transform.localScale = computerScreen.GetComponent<Renderer>().bounds.size;
@@ -67,7 +73,8 @@ public class MissionControl : MonoBehaviour {
         //spawnLocation += computerScreen.transform.forward * computerRend.bounds.size.y / 2 - computerScreen.transform.forward * messageRend.bounds.size.y / 2;
         spawnLocation += computerScreen.transform.up * 0.001f;
 
-        Instantiate(message, spawnLocation, computerScreen.transform.rotation);
+        currentDescription = (GameObject)Instantiate(challengeTextPrefab, spawnLocation, computerScreen.transform.rotation);
+        currentDescription.transform.GetChild(0).GetComponent<TextMesh>().text = description;
     }
 
     int currentChal = 0;

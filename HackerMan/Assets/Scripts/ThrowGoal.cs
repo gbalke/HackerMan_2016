@@ -18,7 +18,7 @@ public class ThrowGoal : GoalState
         objectToThrow = GameObject.Find(objectToThrow.name);
         if (targetObject != null)
         {
-            Debug.Log(targetObject.name);
+            //Debug.Log(targetObject.name);
             targetObject.GetComponent<OnTouchBehavior>().objectHit += ThrowGoal_objectHit;
             targetRB = targetObject.GetComponent<Rigidbody>();
             grabbedRB = objectToThrow.GetComponent<Rigidbody>();
