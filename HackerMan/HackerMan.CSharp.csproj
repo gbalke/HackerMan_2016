@@ -80,12 +80,12 @@
     <Compile Include="Assets\Scripts\TestGoal.cs" />
     <Compile Include="Assets\Scripts\ThrowGoal.cs" />
     <Compile Include="Assets\Scripts\TimeFail.cs" />
-    <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHand.cs" />
-    <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseHandsController.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseInputTest.cs" />
     <Compile Include="Assets\SixenseInput\DemoScenes\Scripts\SixenseObjectController.cs" />
     <Compile Include="Assets\SixenseInput\Scripts\SixenseInput.cs" />
     <Compile Include="Assets\SixenseInput\Scripts\SixensePlugin.cs" />
+    <Compile Include="Assets\batteryHolder.cs" />
+    <Compile Include="Assets\controlPanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
